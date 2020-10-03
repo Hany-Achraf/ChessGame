@@ -1,0 +1,239 @@
+# ChessGame
+The Chess Game
+It's required to implement the Chess game. For any one who is not familiar with this game, he can visit
+http://www.chess.com/learn-how-to-play-chess
+The program will display the current board (as in the figure), accept moves from the players(alternating between Black and White).
+  A   B   C   D   E   F   G   H
+8 bR  bN  bB  bQ  bK  bB  bN  bR
+7 bP  bP  bP  bP  bP  bP  bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * * . . * * . . * * . .
+4 . . * * . . * * . . * * . . * *
+3 * * . . * * . . * * . . * * . .
+2 wP  wP  wP  wP  wP  wP  wP  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+
+Legal Moves: For this program only the basic moves of the pieces are allowed.
+“castling” are NOT allowed.
+Also our program doesn't pay attention to “check” and “checkmate”.
+That is, our program completely unaware of the concepts of
+check and checkmate with regard to legal moves.
+Our program makes sure that a player only moves their own pieces and moves them according to the basic rules of movement for that piece.
+If a Pawn reaches the opposite side of the board it will be promoted
+(turned into) a Queen.
+Our program handling the exceptions (it is shown in simulation below).
+The program also generates an output file provides all the information about the game.
+Input: a move is specified by first giving the coordinates of the square containing the piece to move followed by the coordinates of the square to which the piece is to be moved.
+The coordinates of a square are given using a letter, specifying the column, and a number, specifying the row.
+There will be no space between the letter and the number.
+The row and columns labels will as specified in the output below.
+The from and to coordinates will be on the same line separated by 1 subtracting symbol.
+For example, to make an initial move of the Pawn in front of the Black Queen the user could enter “D7-D6”.
+The game will be between two players.
+Sample Run (inputs in green)
+
+Welcome to the Chess Game!
+  A   B   C   D   E   F   G   H
+8 bR  bN  bB  bQ  bK  bB  bN  bR
+7 bP  bP  bP  bP  bP  bP  bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * * . . * * . . * * . .
+4 . . * * . . * * . . * * . . * *
+3 * * . . * * . . * * . . * * . .
+2 wP  wP  wP  wP  wP  wP  wP  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+White player:
+============
+D2-D3
+  A   B   C   D   E   F   G   H
+8 bR  bN  bB  bQ  bK  bB  bN  bR
+7 bP  bP  bP  bP  bP  bP  bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * * . . * * . . * * . .
+4 . . * * . . * * . . * * . . * *
+3 * * . . * * wP  * * . . * * . .
+2 wP  wP  wP . .  wP  wP  wP  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+Black player:
+============
+D3-D4
+invalid movement
+============
+Black player:
+============
+D7-D6
+  A   B   C   D   E   F   G   H
+8 bR  bN  bB  bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * . . bP . . * * . . * *
+5 * * . . * * . . * * . . * * . .
+4 . . * * . . * * . . * * . . * *
+3 * * . . * * wP  * * . . * * . .
+2 wP  wP  wP . .  wP  wP  wP  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+White player:
+============
+E2-E3
+  A   B   C   D   E   F   G   H
+8 bR  bN  bB  bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * . . bP . . * * . . * *
+5 * * . . * * . . * * . . * * . .
+4 . . * * . . * * . . * * . . * *
+3 * * . . * * wP  wP . . * * . .
+2 wP  wP  wP . . * *  wP  wP  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+Black player:
+============
+C8-A6
+invalid movement
+============
+Black player:
+============
+C8-H3
+  A   B   C   D   E   F   G   H
+8 bR  bN . .  bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * . . bP . . * * . . * *
+5 * * . . * * . . * * . . * * . .
+4 . . * * . . * * . . * * . . * *
+3 * * . . * * wP  wP . . * *  bB
+2 wP  wP  wP . . * *  wP  wP  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+White player:
+============
+H1-H2
+invalid movement
+============
+White player:
+============
+D3-D4
+  A   B   C   D   E   F   G   H
+8 bR  bN . .  bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * . .  bP . . * * . . * *
+5 * * . . * * . . * * . . * * . .
+4 . . * * . .  wP . . * * . . * *
+3 * * . . * * . .  wP . . * *  bB
+2 wP  wP  wP . . * *  wP  wP  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+Black player:
+============
+D6-D7
+invalid movement
+============
+Black player:
+============
+D6-D5
+  A   B   C   D   E   F   G   H
+8 bR  bN . .  bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * *  bP * * . . * * . .
+4 . . * * . .  wP . . * * . . * *
+3 * * . . * * . .  wP . . * *  bB
+2 wP  wP  wP . . * *  wP  wP  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+White player:
+============
+G2-H3
+  A   B   C   D   E   F   G   H
+8 bR  bN . .  bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * *  bP * * . . * * . .
+4 . . * * . .  wP . . * * . . * *
+3 * * . . * * . .  wP . . * *  wP
+2 wP  wP  wP . . * *  wP  . .  wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+Black player:
+============
+D5-D4
+Invalid movement
+============
+Black player:
+============
+B8-C6
+  A   B   C   D   E   F   G   H
+8 bR  * * . . bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * bN * * . . * * . . * *
+5 * * . . * *  bP * * . . * * . .
+4 . . * * . .  wP . . * * . . * *
+3 * * . . * * . .  wP . . * * wP
+2 wP  wP  wP  * * . .  wP . . wP
+1 wR  wN  wB  wQ  wK  wB  wN  wR
+============
+White player:
+============
+D1-H5
+  A   B   C   D   E   F   G   H
+8 bR  * * . . bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * bN * * . . * * . . * *
+5 * * . . * * bP * * . . * *  wQ
+4 . . * * . . wP . . * * . . * *
+3 * * . . * * . . wP . . * *  wP
+2 wP  wP  wP  * * . .  wP . . wP
+1 wR  wN  wB  . . wK  wB  wN  wR
+============
+Black player:
+============
+C6-D4
+  A   B   C   D   E   F   G   H
+8 bR  * * . . bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  bP  bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * *  bP * * . . * * wQ
+4 . . * * . . bN . . * * . . * *
+3 * * . . * * . . wP . . * *  wP
+2 wP  wP  wP  * * . .  wP . . wP
+1 wR  wN  wB  . . wK  wB  wN  wR
+============
+White player:
+============
+H5-F7
+  A   B   C   D   E   F   G   H
+8 bR  * * . . bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  wQ  bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * * bP * * . . * * . .
+4 . . * * . . bN . . * * . . * *
+3 * * . . * * . . wP . . * *  wP
+2 wP  wP  wP  * * . . wP . .  wP
+1 wR  wN  wB  . . wK  wB  wN  wR
+============
+Black player:
+============
+A8-C8
+  A   B   C   D   E   F   G   H
+8 . . * * bR bQ  bK  bB  bN  bR
+7 bP  bP  bP * *  bP  wQ  bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * * bP * * . . * * . .
+4 . . * * . . bN . . * * . . * *
+3 * * . . * * . . wP . . * *  wP
+2 wP  wP  wP  * * . . wP . .  wP
+1 wR  wN  wB  . . wK  wB  wN  wR
+============
+White player:
+============
+F7-E8
+  A   B   C   D   E   F   G   H
+8 . . * * bR bQ  wQ  bB  bN  bR
+7 bP  bP  bP * *  bP  . . bP  bP
+6 . . * * . . * * . . * * . . * *
+5 * * . . * * bP * * . . * * . .
+4 . . * * . . bN . . * * . . * *
+3 * * . . * * . . wP . . * *  wP
+2 wP  wP  wP  * * . . wP . .  wP
+1 wR  wN  wB  . . wK  wB  wN  wR
+White player is winner.
